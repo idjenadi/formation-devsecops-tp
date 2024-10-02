@@ -58,8 +58,8 @@ pipeline {
     //--------------------------
     stage('Docker Build and Push') {
       steps {
-        withCredentials([string(credentialsId: 'DOCKER_HUB_PASSWORD_Imad', variable: 'DOCKER_HUB_PASSWORD')]) {
-          sh 'sudo docker login -u imad403  -p $Password_DockerHub'
+        withCredentials([string(credentialsId: 'Password_DockerHub', variable: 'DOCKER_HUB_PASSWORD')]) {
+          sh 'sudo docker login -u imad403  -p $DOCKER_HUB_PASSWORD'
           sh 'printenv'
           sh 'sudo docker build -t imad403/devops-app:""$GIT_COMMIT"" .'
           sh 'sudo docker push imad403/devops-app:""$GIT_COMMIT""'
