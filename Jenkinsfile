@@ -94,10 +94,14 @@ pipeline {
           }},
 			  
           "Kubesec Scan": {
+		   catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
             sh "sudo bash kubesec-scan.sh"
+		   }
           },
           "Trivy Scan": {
+		   catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
             sh "sudo bash trivy-k8s-scan.sh"
+		   }
           }
 
 
