@@ -30,6 +30,10 @@ spec:
   - port: 8080
     protocol: TCP
     targetPort: 8080
+  - port: 9001
+    protocol: TCP
+    targetPort: 9001
+    
   selector:
     app: devsecops
   type: NodePort
